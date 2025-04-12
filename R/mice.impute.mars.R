@@ -12,6 +12,8 @@
 #' @param ... Other named arguments.
 #'
 #' @return Vector with imputed data, same type as \code{y}, and of length \code{sum(wy)}
+#' @import earth mice
+#' @importFrom stats binomial gaussian predict rnorm
 #' @export
 #'
 #' @examples
@@ -19,7 +21,6 @@
 
 
 mice.impute.mars <- function (y, ry, x, wy = NULL, degree = 10, sampling = 0, ...){
-  mice:::install.on.demand("earth", ...)
   if (is.null(wy))
     wy <- !ry
   nobs <- sum(ry)
